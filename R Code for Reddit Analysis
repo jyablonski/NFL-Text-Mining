@@ -1,0 +1,80 @@
+library(tidyverse)
+library(jsonlite)
+library(data.table)
+library(extrafont)
+library(magick)
+library(scales)
+library(lubridate)
+library(zoo)
+
+# create search keyword & date variables for automation purposes
+keyword <- 'nfl'
+dateVariable <- Sys.Date()
+dateVariablePrev <- dateVariable - years(1)
+mdyDate <-  format(dateVariable, format = "%B %d, %Y")
+mdyDatePrevious <- format(dateVariablePrev, format = "%B %d, %Y")
+
+
+# custom theme
+theme_jacob <- function () { 
+  theme_minimal(base_size=9, base_family="Gill Sans MT") %+replace% 
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.background = element_rect(fill = 'floralwhite', color = 'floralwhite')
+    )
+}
+
+# Get Daily Comment Activity From Pushshift API for whatever subreddit you specify in the keyword variable. 
+url <- paste("http://api.pushshift.io/reddit/comment/search/?subreddit=", keyword, "&aggs=created_utc&frequency=day&after=400&size=0", sep = "")
+json_data <- fromJSON(paste(readLines(url), collapse=""))
+df <- as.data.frame(json_data[["aggs"]][["created_utc"]])
+
+
+# Reformat date
+df$created_utc <- as.numeric(as.character(df$key))
+df$date <- format(as.POSIXct(df$created_utc, origin = "1970-01-01", tz = "America/New_York", usetz=TRUE))
+df$date <- ymd(as.Date(df$date))
+
+# top 10 dates we might want to highlight in the visualization.
+top10 <- df %>%
+  filter(date >= dateVariablePrev & date <= dateVariable) %>%
+  top_n(10, doc_count)
+
+# Important Dates we want to highlight
+important.dates <- c(as.Date("2019-01-20"), as.Date("2019-02-03"), as.Date("2019-03-12"), as.Date("2019-08-24"),
+                     as.Date("2019-09-07"), as.Date("2020-01-04"), as.Date("2020-01-11"), as.Date("2020-01-19"),
+                     as.Date("2020-01-11"), as.Date("2019-04-25"), as.Date("2019-11-14"), as.Date("2020-02-02"))
+
+# Filling Important Date column.
+df$fill <- ifelse(df$date %in% important.dates, "Important Date", " ") # Manually setting dates
+df$impDate <- ifelse(df$date %in% top10$date, "Important Date v2", " ") # Automatically selects top 10 for me
+
+# Daily Comment Activity from Jan 20, 2019 to Feb 3, 2020
+df %>% filter(date >= "2019-01-20" & date <= "2020-02-03") %>%
+  ggplot(aes(x = date, y = doc_count, fill = fill)) +
+  geom_bar(stat = 'identity') + 
+  scale_fill_manual(values = c("#969696", "#de2d26")) +
+  theme_jacob() +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
+  scale_y_continuous(labels = comma, limits = c(0, 240000), breaks = seq(0, 240000, 30000)) +
+  annotate(geom = 'text', x = as.Date("2019-01-20"), y = 205000, label = "2019 AFC & NFC Championship", family = "Gill Sans MT", size = 2.25, hjust = 0.2) +
+  annotate(geom = 'text', x = as.Date("2019-02-03"), y = 185000, label = "Super Bowl LIII", family = "Gill Sans MT", size = 2.25, hjust = 0.2) +
+  annotate(geom = 'text', x = as.Date("2019-03-12"), y = 92000, label = "Free Agency", family = "Gill Sans MT", size = 2.25) +
+  annotate(geom = 'text', x = as.Date("2019-04-25"), y = 105000, label = "2019 NFL Draft", family = "Gill Sans MT", size = 2.25) +
+  annotate(geom = 'text', x = as.Date("2019-08-24"), y = 47000, label = "Andrew Luck Retires", family = "Gill Sans MT", size = 2.25, hjust = 1) +
+  annotate(geom = 'text', x = as.Date("2019-09-07"), y = 125000, label = "Antonio Brown Signs w/ Patriots", family = "Gill Sans MT", size = 2.25, hjust = 0.7) +
+  annotate(geom = 'text', x = as.Date("2019-11-14"), y = 125000, label = "Myles Garrett Incident", family = "Gill Sans MT", size = 2.25) +
+  annotate(geom = 'text', x = as.Date("2020-01-04"), y = 240000, label = "Patriots Eliminated in Wild Card Round", family = "Gill Sans MT", size = 2.25, hjust = 0.8) +
+  annotate(geom = 'text', x = as.Date("2020-01-11"), y = 217000, label = "14-2 Ravens \n Eliminated", family = "Gill Sans MT", size = 2.25, hjust = 0.15) +
+  annotate(geom = 'text', x = as.Date("2020-01-19"), y = 96000, label = "2020 AFC & \n NFC Championship", family = "Gill Sans MT", size = 2.25) +
+  annotate(geom = 'text', x = as.Date("2020-02-02"), y = 150000, label = "Super Bowl LIV", family = "Gill Sans MT", size = 2.25) +
+  labs(title = paste("r/", keyword, " Comment Activity", sep = ""), 
+       subtitle = paste("January 20, 2019 - ", mdyDate, sep = ""), 
+       x = "", 
+       y = "Total Comments", 
+       caption = "data via pushshift.io API | Created by Jacob Yablonski") + 
+  theme(plot.title = element_text(face = 'bold', hjust = .5), 
+        plot.subtitle = element_text(hjust = .5), 
+        legend.position = 'none') 
+
+ggsave("rnfl.png", width = 9, height = 4)
