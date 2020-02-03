@@ -13,3 +13,4 @@ Madden Curse - A Pro Athlete who appears on the front cover of a video game titl
 ![rnflpointer2](https://user-images.githubusercontent.com/16946556/73687231-6efb2d80-467e-11ea-806e-cb64751bc274.png)
 ![rnflpointer](https://user-images.githubusercontent.com/16946556/73687233-6efb2d80-467e-11ea-94f9-01a125eb8aa5.png)
 ![rnflLog](https://user-images.githubusercontent.com/16946556/73687237-6efb2d80-467e-11ea-843d-6d6ceb731300.png)
+![top6 words](https://user-images.githubusercontent.com/16946556/73688679-6a844400-4681-11ea-9b44-e8fb827f10bd.png)
