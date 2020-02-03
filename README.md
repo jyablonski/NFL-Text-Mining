@@ -2,6 +2,8 @@
 
 ------------ UPDATING AFTER SUPER BOWL 54 ----
 
+Madden Curse - A Pro Athlete who appears on the front cover of a video game title (Madden 2020) and suffers a major injury during that season.  Pat Mahomes dislocated his knee cap in October but went on to win the Super Bowl MVP this year, breaking the "Madden Curse" and Twitter promptly reacted.
+
 ![rnfl](https://user-images.githubusercontent.com/16946556/73687222-6b67a680-467e-11ea-963b-9dde77368b82.png)
 ![rnfltweets](https://user-images.githubusercontent.com/16946556/73687228-6e629700-467e-11ea-8bab-4da71abc8745.png)
 ![rnflWordPairs](https://user-images.githubusercontent.com/16946556/73687229-6e629700-467e-11ea-9ff5-3bfad922275a.png)
