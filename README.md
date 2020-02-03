@@ -30,3 +30,7 @@ This helps give an idea of how the top few words represent the majority of the d
 
 ![top6 words](https://user-images.githubusercontent.com/16946556/73688679-6a844400-4681-11ea-9b44-e8fb827f10bd.png)
 Here are the top 6 most common words found in the tweets, which represent over 26.6% of the entire dataset.  You can see the majority of people are praising the Chiefs and Head Coach Andy Reid, who won his first Super Bowl as a Head Coach after more than 20 years with the Philadelphia Eagles and the Kansas City Chiefs.
+
+![comparisoncloud1 0](https://user-images.githubusercontent.com/16946556/73691934-34968e00-4688-11ea-8348-594bca760e99.png)
+![comparisoncloud3 0](https://user-images.githubusercontent.com/16946556/73691935-34968e00-4688-11ea-8a70-a46eb192d0b9.png)
+![Rplot02](https://user-images.githubusercontent.com/16946556/73691936-34968e00-4688-11ea-8cea-56d43d76f2ef.png)
