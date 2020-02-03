@@ -34,3 +34,4 @@ Here are the top 6 most common words found in the tweets, which represent over 2
 ![comparisoncloud1 0](https://user-images.githubusercontent.com/16946556/73691934-34968e00-4688-11ea-8348-594bca760e99.png)
 ![comparisoncloud3 0](https://user-images.githubusercontent.com/16946556/73691935-34968e00-4688-11ea-8a70-a46eb192d0b9.png)
 ![Rplot02](https://user-images.githubusercontent.com/16946556/73691936-34968e00-4688-11ea-8cea-56d43d76f2ef.png)
+![comparisoncloudcolor](https://user-images.githubusercontent.com/16946556/73692062-6dcefe00-4688-11ea-8080-ffa8e06ecaaf.png)
