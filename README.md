@@ -17,6 +17,12 @@ Because we're analyzing Super Bowl tweets, I filtered the word 'super' out of th
 ![rnflNot](https://user-images.githubusercontent.com/16946556/73687235-6efb2d80-467e-11ea-8c81-6d12529a91e6.png)
 Negation words like not, without, and no can have opposite meaning.  This chart includes words that were preceded by 'not' that the previous 2 graphs weren't able to take into account.  However because their number of occurrences is so low we can be confident that it didn't have a meaningful impact on the analysis.
 
+![comparisoncloud3 0](https://user-images.githubusercontent.com/16946556/73691935-34968e00-4688-11ea-8a70-a46eb192d0b9.png)
+
+![comparisoncloudcolor](https://user-images.githubusercontent.com/16946556/73692062-6dcefe00-4688-11ea-8080-ffa8e06ecaaf.png)
+
+This is a wordcloud version of the positive & negative sentiment analysis charts from above.  Blue is positive and red is negative.  The bigger the word, the more frequently it appears in the text analysis.
+
 ![rnflWordPairs](https://user-images.githubusercontent.com/16946556/73687229-6e629700-467e-11ea-9ff5-3bfad922275a.png)
 This is a chart showcasing bigrams in the dataset; words that are located close to one another we're commonly tweeted in conjunction with one another.
 
@@ -29,6 +35,7 @@ A common word pair throughout the analysis was the "Madden Curse", which is when
 This helps give an idea of how the top few words represent the majority of the data (also known as the Pareto Principle).  There's only about ~20 words that have significant occurrences in the data before they start falling off.
 
 ![top6 words](https://user-images.githubusercontent.com/16946556/73688679-6a844400-4681-11ea-9b44-e8fb827f10bd.png)
+
 Here are the top 6 most common words found in the tweets, which represent over 26.6% of the entire dataset.  You can see the majority of people are praising the Chiefs and Head Coach Andy Reid, who won his first Super Bowl as a Head Coach after more than 20 years with the Philadelphia Eagles and the Kansas City Chiefs.
 
 
