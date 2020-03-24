@@ -1,11 +1,13 @@
 # Super Bowl LIV Text Mining and Sentiment Analysis
 
+## Introduction
 This project goes through my process for analyzing Twitter & Reddit data on Super Bowl LIV.  I used a combination of the rTweet package & the Pushshift.io API to extract data, preprocessed & cleaned it in R, and utilized the tidytext package to analyze the text and get insights from the data.
 
 ![rnfl](https://user-images.githubusercontent.com/16946556/73687222-6b67a680-467e-11ea-963b-9dde77368b82.png)
 
 This is an overview of the past 13 months of NFL related events, with the overall popularity measured by # of comments on the r/nfl subreddit.  Because I don't have access to the contents of the comments themselves, I decided to take a subset of data from Tweets from Twitter to get an idea of how people reacted to Super Bowl LIV.  The Twitter API limits you to only extracting 18,000 tweets at a time. 
 
+## Sentiment Analysis
 ![rnflTop25](https://user-images.githubusercontent.com/16946556/73687230-6efb2d80-467e-11ea-8849-646c53d47f0f.png)
 Here are the top 25 most popular words in the Twitter Analysis after removing stop words such as and, if, for, to etc.
 
